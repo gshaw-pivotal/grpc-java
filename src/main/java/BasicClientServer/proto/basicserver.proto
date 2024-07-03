@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+
+package coms;
+
+service ComService {
+  rpc StandardCom (StandardRequest) returns (StandardReply) {}
+}
+
+message StandardRequest {
+  string message = 1;
+}
+
+message StandardReply {
+  string message = 1;
+}
