@@ -59,6 +59,7 @@ public class BasicServer {
 
         @Override
         public void standardCom(StandardRequest request, StreamObserver<StandardReply> responseObserver) {
+            logger.info("Server received: " + request.getMessage());
             coms.StandardReply reply = coms.StandardReply.newBuilder().setMessage(request.getMessage()).build();
             responseObserver.onNext(reply);
             responseObserver.onCompleted();
