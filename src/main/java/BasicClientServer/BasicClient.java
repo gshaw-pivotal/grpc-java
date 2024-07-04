@@ -25,8 +25,16 @@ public class BasicClient {
                 .build();
 
         try {
+            String message = "";
             BasicClient client = new BasicClient(clientChannel);
-            client.sendMessage("I should get this back");
+
+            while (true) {
+                message = System.console().readLine();
+                if (message.equalsIgnoreCase("exit")) {
+                    break;
+                }
+                client.sendMessage(message);
+            }
         } finally {
             clientChannel.shutdownNow().awaitTermination(5, TimeUnit.SECONDS);
         }
